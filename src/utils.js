@@ -1,5 +1,6 @@
 import Vue from 'vue'
-const isServer = Vue.prototype.$isServer
+import { isServerRendering } from 'vue'
+const isServer = isServerRendering()
 
 /* istanbul ignore next */
 export const on = (function () {
@@ -49,5 +50,5 @@ export function rafThrottle(fn) {
 }
 
 export const isFirefox = function () {
-  return !Vue.prototype.$isServer && !!window.navigator.userAgent.match(/firefox/i)
+  return !isServer && !!window.navigator.userAgent.match(/firefox/i)
 }
